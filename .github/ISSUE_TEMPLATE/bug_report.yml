@@ -1,0 +1,36 @@
+name: Bug report
+description: Report something that isn't working in Kiln
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Load an audio file
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 130 on macOS 15
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Console errors, screenshots, audio format, etc.
