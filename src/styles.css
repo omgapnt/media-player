@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0b0a;
+  --color-fg: #eceae4;
+  --color-muted: #a8a299;
+  --color-line: #2c2926;
+  --color-glass: #141210;
+  --color-ember: #e08a45;
+  --font-sans: "Instrument Sans", "Avenir Next", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Palatino, Georgia, serif;
+  --radius-dock: 1.5rem;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-bg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--color-fg);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-ember) 50%, transparent);
+    color: var(--color-bg);
+  }
+}
+
+.fade {
+  transition: opacity 280ms ease;
+}
+
+.invite-scrim {
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--color-bg) 84%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.live-dot {
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+input.range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2.75rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+input.range.sens {
+  width: 6.75rem;
+}
+
+input.range:focus {
+  outline: none;
+}
+
+input.range:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 3px;
+}
+
+input.range::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+input.range.seek::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--color-fg) var(--pct, 0%),
+    var(--color-line) var(--pct, 0%)
+  );
+}
+
+input.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -7px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-fg);
+}
+
+input.range::-moz-range-track {
+  height: 2px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+input.range.seek::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    var(--color-fg) var(--pct, 0%),
+    var(--color-line) var(--pct, 0%)
+  );
+}
+
+input.range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade,
+  .live-dot {
+    animation: none;
+    transition: none;
+  }
+}

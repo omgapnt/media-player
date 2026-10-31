@@ -1,0 +1,6 @@
+node_modules
+.vercel
+.output
+.tanstack
+package-lock.json
+src/routeTree.gen.ts
